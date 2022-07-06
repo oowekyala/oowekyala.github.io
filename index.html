@@ -1,0 +1,129 @@
+<html>
+    <!-- -->
+    <style>
+        /* general styling */
+        * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+        }
+         
+        html,
+        body {
+          height: 100%;
+          margin: 0;
+        }
+         
+        body {
+          align-items: center;
+          background-color: #4f78ff;
+          display: flex;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+            Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+        }
+         
+        .container {
+          color: #333;
+          margin: 0 auto;
+          text-align: center;
+        }
+         
+        h1 {
+          font-weight: normal;
+          letter-spacing: 0.125rem;
+          text-transform: uppercase;
+        }
+         
+        li {
+          display: inline-block;
+          font-size: 1.5em;
+          list-style-type: none;
+          padding: 1em;
+          text-transform: uppercase;
+        }
+         
+        li span {
+          display: block;
+          font-size: 4.5rem;
+        }
+         
+        .message {
+          font-size: 4rem;
+        }
+         
+        #content {
+          display: none;
+          padding: 1rem;
+        }
+         
+        .emoji {
+          padding: 0 0.25rem;
+        }
+         
+        @media all and (max-width: 768px) {
+          h1 {
+            font-size: 1.5rem;
+          }
+         
+          li {
+            font-size: 1.125rem;
+            padding: 0.75rem;
+          }
+         
+          li span {
+            font-size: 3.375rem;
+          }
+        }
+         
+        </style>
+    <body>
+        <div class="container">
+          <h1 id="headline">Diese Woche: <b>Loukoum</b></h1>
+          <h1 id="headline">Countdown bis nächstem Mittwoch 😺</h1>
+          <div id="countdown">
+            <ul>
+              <li><span id="days"></span>Tage</li>
+              <li><span id="hours"></span>Stunden</li>
+              <li><span id="minutes"></span>Minuten</li>
+              <li><span id="seconds"></span>Sekunden</li>
+            </ul>
+          </div>
+          <div class="message">
+            <div id="content">
+              <span class="emoji"><img draggable="false" role="img" class="emoji" alt="🥳" src="https://s.w.org/images/core/emoji/14.0.0/svg/1f973.svg"></span>
+              <span class="emoji"><img draggable="false" role="img" class="emoji" alt="🎉" src="https://s.w.org/images/core/emoji/14.0.0/svg/1f389.svg"></span>
+              <span class="emoji"><img draggable="false" role="img" class="emoji" alt="🎂" src="https://s.w.org/images/core/emoji/14.0.0/svg/1f382.svg"></span>
+            </div>
+          </div>
+        </div><script>
+            (function () {
+              const second = 1000,
+                minute = second * 60,
+                hour = minute * 60,
+                day = hour * 24;
+             
+              // ja mann so viel Zeit hab ich nicht hhh
+              let countDown = new Date("2022-07-13T00:00:00").getTime();
+              let x = setInterval(function () {
+                  let now = new Date().getTime();
+                  let distance = countDown - now;
+             
+                  (document.getElementById("days").innerText = Math.floor(distance / day)),
+                    (document.getElementById("hours").innerText = Math.floor(
+                      (distance % day) / hour
+                    )),
+                    (document.getElementById("minutes").innerText = Math.floor(
+                      (distance % hour) / minute
+                    )),
+                    (document.getElementById("seconds").innerText = Math.floor(
+                      (distance % minute) / second
+                    ));
+             
+                  //seconds
+                }, 0);
+            })();
+             
+            </script>
+        </body>
+
+</html>
